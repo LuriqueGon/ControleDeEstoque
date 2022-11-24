@@ -1,0 +1,14 @@
+<div class="wrapper">
+    <?php $this->loadComponent('navbar'); ?>
+    <?php $this->loadComponent('sidebar'); ?>
+
+    <div class="content-wrapper">
+        <?php 
+
+            $content = isset($_GET['content']) ? "content/".$_GET['content'] : "default";
+            $this->loadComponent($content);
+        ?>
+    </div>
+
+    <?php $this->loadComponent('footer'); ?>
+</div>

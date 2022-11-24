@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,500&display=swap');
+
+*{
+    list-style: none;
+    color: inherit;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    outline: none;
+    z-index: 1;
+}
+
+:root{
+    --color-01 :#343a40 ;
+    --color-02 :#454d55 ;
+}
+
+
+.alert{
+    text-transform: uppercase;
+    color: red;
+    letter-spacing: .1rem;
+    text-align: center;
+    margin-bottom: 4rem;
+    text-decoration: underline;
+    text-decoration-color: rgba(117, 1, 1, 0.349);
+    position: absolute;
+    top: 4%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: #0007;
+}
+.alert h1{
+    font-size: 1.4rem;
+}
+.fechar i{
+    position: absolute;
+    font-size: 3rem;
+    color: black;
+    top: 1rem;
+    right: 3rem;
+}
+.fechar:hover i{
+    cursor: pointer;
+    color: red;
+}
+
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    
+}
+input[type=number] { 
+   -moz-appearance: textfield;
+   appearance: textfield;
+
+}
+
+.teste .content h1{
+    width: 100%;
+    font-size: 2.2rem;
+    color: white;
+    background-color: var(--color-01);
+    text-transform: uppercase;
+    padding: 1rem 0;
+    text-indent: 6rem;
+    letter-spacing: .2rem;
+    text-shadow: .1rem .1rem .2rem rgba(0, 0, 0, 0.7);
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.teste .content .details{
+    display: flex;  
+    height: 80vh;
+    background-color: #fff;
+}
+
+.teste .content .thead{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: fixed;
+}
+.teste .content .thead div{
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: .8rem;
+    text-align: center;
+    border: 1px solid #000;
+    padding: 0.5rem 0;
+    width: 8rem;
+}
+.teste .content .thead div.cdb{
+    width: 12.6rem;
+}
+.teste .content .thead div.item{
+    width: 2.7rem;
+}
+.teste .content .thead div.desc{
+    width: 23.9rem;
+    text-align: start;
+    text-indent: 2rem;
+}
+.teste .content .thead div.valor{
+    width: 8rem;
+}
+.teste .content .thead div.quant{
+    width: 4.9rem;
+}
+
+.teste .content .details .notaFiscal{
+    height: 80vh;
+    overflow: auto;
+    width: 67.6vw;
+    background-color: #fff;
+}
+
+/* SCROLL BAR */
+.teste .content .details .notaFiscal::-webkit-scrollbar {
+    width: 2px;               /* width of the entire scrollbar */
+}
+  
+.teste .content .details .notaFiscal::-webkit-scrollbar-track {
+    background: transparent ;        /* color of the tracking area */
+}
+
+.teste .content .details .notaFiscal::-webkit-scrollbar-thumb {
+    background-color: blue;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid transparent;  /* creates padding around scroll thumb */
+}
+
+.teste .content .details .notaFiscal table{
+    border-collapse: collapse;
+    border: 1px solid #0003;
+}
+
+.teste .content .details .notaFiscal table thead th{
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: .8rem;
+    text-align: center;
+    /* border-bottom: 1px solid #0004; */
+    border: 1px solid #000;
+    padding: .5rem 0;
+    text-indent: 1rem;
+    background-color: #fff;
+}
+.teste .content .details .notaFiscal table thead th.cdb{
+    width: 8rem;
+}
+.teste .content .details .notaFiscal table thead th.item{
+    width: 2rem;
+}
+.teste .content .details .notaFiscal table thead th.desc{
+    width: 24rem;
+    text-align: start;
+    text-indent: 2rem;
+}
+.teste .content .details .notaFiscal table thead th.valor{
+    width: 8rem;
+}
+.teste .content .details .notaFiscal table thead th.quant{
+    width: 5rem;
+}
+.teste .content .details .notaFiscal table thead th.sub{
+    width: 8rem;
+}
+
+.teste .content .details .notaFiscal table tbody tr{
+    background-color: #fff;
+    margin-bottom: .6rem;
+}
+.teste .content .details .notaFiscal table tbody td{
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid #0004;
+    padding: 1rem;
+    margin-bottom: .6rem;
+    text-transform: uppercase;
+}
+.teste .content .details .notaFiscal table tbody td.desc{
+    text-align: start;
+}
+.teste .content .details .notaFiscal table tbody td.cdb{
+    background-color: var(--color-01);
+    letter-spacing: .2rem;
+    text-shadow: .1rem .1rem .2rem rgba(0, 0, 0, 0.7);
+    color: white;
+}
+
+
+.teste .content .info{
+    width: 27rem;
+    padding-top: 2rem;
+    border-left: 2px solid black;
+    height: 86vh;
+    background-color: #fff;
+}
+.teste .content .info .field-line{
+    width: 95%;
+    margin-left: 2rem;
+}
+.teste .content .info .field-line p{
+    width: 86%;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+.teste .content .info .field-line div{
+    background: var(--color-01);
+    width: 86%;
+    height: 4rem;
+    border-radius: 2rem;
+    margin-bottom: 2rem;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+.teste .content .info .field-line div p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    font-weight: bold;
+    text-shadow: 0.1rem 0.1rem 0.2rem black;
+}
+
+.teste .content .info button{
+    margin-left: 2rem;
+    width: 86%;
+    padding: 1rem 0;
+    font-weight: bold;
+    font-size: 1.6rem;
+    border: 3px solid grey;
+    background: black;
+    font-weight: bold;
+    background: black;
+    outline: none;
+    font-weight: bold;
+    border-radius: 2rem;
+    text-shadow: 0.1rem 0.1rem 0.2rem black;
+    cursor: pointer;
+    opacity: .8;
+    color: white;
+    transition: all .5s;
+}
+.teste .content .info button:hover{
+    opacity: 1;
+}
+.teste .content .item .input-line{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    height: 5rem;
+    background-color: var(--color-02);
+    width: 70%;
+}
+.teste .content .item .input-line .input-field{
+    width: 18rem;
+    margin: 0 1rem;
+    height: 3rem;
+}
+.teste .content .item .input-line .input-field.quant{
+    width: 5rem;
+}
+.teste .content .item .input-line .input-field input{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+.teste .content .item .input-line .input-field input.addProd{
+    background: black;
+    outline: none;
+    font-weight: bold;
+    border-radius: 2rem;
+    text-shadow: 0.1rem 0.1rem 0.2rem black;
+    cursor: pointer;
+    opacity: .6;
+    color: white;
+    transition: all .5s;
+}
+.teste .content .item .input-line .input-field input.addProd:hover{
+    opacity: 1;
+}

@@ -1,0 +1,67 @@
+:root{
+    --color-01 :#343a40 ;
+    --color-02 :#454d55 ;
+    --color-03 :#354b61 ;
+    --color-04 :#1f3041 ;
+}
+table{
+    width: 100%;
+}
+main.historicoMain td, main.historicoMain tr, main.historicoMain th, main.historicoMain table{
+    border: 0;
+}
+main.historicoMain{
+    border-collapse: collapse;
+}
+main.historicoMain .tableBorder{
+    border: 3px solid black;
+    background-color: var(--color-03);
+    color: white;
+}
+main.historicoMain td.tableBorder2{
+    border: 1px solid white;    
+}
+main.historicoMain th.tableBorder2{
+    border: 1px solid black;    
+}
+main.historicoMain td.tableBorder2{
+    background-color: var(--color-03);
+    color: white;
+}
+main.historicoMain th.tableBorder2{
+    background-color: var(--color-04);
+    color: white;
+}
+
+main.historicoMain .tableBorder2.produtos{
+    padding: 0;
+    border-bottom: 0;
+    border-top: 0;
+}
+main.historicoMain .tableBorder3{
+    border: 1px solid #fff;
+}
+main.historicoMain .table3 thead tr th{
+    background-color: var(--color-01);
+    color: white;
+    text-shadow: .1rem .2rem .3rem black;
+    
+}
+main.historicoMain .table3 tbody tr:nth-child(even){
+    background-color: var(--color-01);
+    color: white;
+    text-shadow: .1rem .2rem .3rem black;
+}
+main.historicoMain .table3 tbody tr:nth-child(odd){
+    background-color: var(--color-02);
+    color: white;
+    text-shadow: .1rem .2rem .3rem black;
+}
+main.historicoMain .table3 .cdb{
+    width: 10rem;
+}
+main.historicoMain .table3 .desc{
+    width: 25rem;
+    text-align: start;
+    text-indent: 2rem;
+}

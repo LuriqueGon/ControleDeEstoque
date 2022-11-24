@@ -1,0 +1,246 @@
+<?php
+
+    use MF\Model\Container;
+    $itensVendas = Container::getModel('vendas');
+    $itens = $itensVendas->getAll();
+    $totalCompra = 0;
+
+    $cdb = isset($_GET['cdb']) ? $_GET['cdb'] : "";
+    $quant = isset($_GET['quant']) ? $_GET['quant'] : "";
+    if(isset($_GET['cdb'])){
+        $itensVendas->__set('cdb', $_GET['cdb']);
+        $itemGet = $itensVendas->getItem();
+
+    }
+
+    $consumidor = empty($itensVendas->getConsumidorId()['id']) ? 1 : $itensVendas->getConsumidorId()['id']+ 1 ;
+
+?>
+<script src="/dist/js/finalizarCompras.js"></script>
+
+
+<main class="teste">
+    <div class="fechar">
+        <a href="/"><i class="fa-solid fa-xmark"></i></a>
+    </div>
+
+    <div class="content">
+        <h1>Nome da Sua Loja Aqui</h1>
+        <div class="details">
+            <div class="notaFiscal">
+                <div class="thead">
+                    <div class="cdb">Código</div>
+                    <div class="item">Item</div>
+                    <div class="desc">Descrição</div>
+                    <div class="valor">Valor Unitario</div>
+                    <div class="quant">Quant</div>
+                    <div class="sub">Sub-Total</div>
+                </div>
+                <table class="table table-dark table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th class="cdb">Código</th>
+                            <th class="item">Item</th>
+                            <th class="desc">Descrição</th>
+                            <th class="valor">Valor Unitario</th>
+                            <th class="quant">Quant</th>
+                            <th class="sub">Sub-Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($itens as $key => $item){?>
+                            <?php $totalCompra += ($item['valVendItem'] *  $item['quantidade'])?>
+                            <tr>
+                                <td class="cdb"><?php echo $item['cdb'] ?></td>
+                                <td class="item"><?php echo $key+1 ?></td>
+                                <td class="desc"><?php echo $item['descricao'] ?></td>
+                                <td class="valor">R$ <?php echo number_format($item['valVendItem'],2,',','.') ?></td>
+                                <td class="quant"><?php echo $item['quantidade'] ?></td>
+                                <td class="sub">R$ <?php echo number_format(($item['valVendItem'] *  $item['quantidade']),2,',','.')?></td>
+                            </tr>
+                        <?php }?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="info">
+                <div class="field-line">
+                    <p>Preço</p>
+                    <div>
+                        <p>R$ <?php echo isset($itemGet['valVendItem']) ? number_format($itemGet['valVendItem'],1,',','.') : 00,00?></p>
+                    </div>
+                </div>
+                <div class="field-line">
+                    <p>Quantidade</p>
+                    <div>
+                        <p><?php echo empty($quant) ? 0 : $quant ?></p>
+                    </div>
+                </div>
+                <div class="field-line">
+                    <p>Sub-Total</p>
+                    <div>
+                        <p>
+                            R$ <?php echo isset($itemGet['valVendItem']) ? number_format(($itemGet['valVendItem'] * $quant),1,',','.') : 00,00 ?>
+                        </p>
+                    </div>
+                </div>
+
+
+
+                <div class="field-line">
+                    <p>Total da Compra</p>
+                    <div>
+                        <p>R$ <?php echo number_format($totalCompra,2,',','.')?></p>
+                    </div>
+                </div>
+
+                <button onclick="finalizarCompras()">Finalizar Compras</button>
+            </div>
+        </div>
+        <form class="item" action="/vendedor/vendas/addItem" method="post">
+            <div class="input-line">
+                <div class="input-field">
+                    <input type="text" name="cdb" id="cdb" placeholder="Cod Barras" required>
+                </div>
+                <div class="input-field quant">
+                    <input type="number" name="quant" id="quant" placeholder="Quant">
+                </div>
+                <div class="input-field">
+                    <input class="addProd" type="submit" value="Adicionar Produto">
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+</main>
+<?php 
+    
+    $infoModel = Container::getModel('loja');
+    $info = $infoModel->getInfo();
+    $info['CNPJ'] = $infoModel->formataCJNP($info['CNPJ']);
+
+
+    
+
+?>
+<div class="modal">
+    <div class="container">
+        <div class="printModal">
+            <div class="info">
+                <h1>|NOME DA FARMACIA|</h1>
+
+                <div class="enderecoInfo">
+                    <p><span><?php echo $info['endereco'] ?></p>
+                    <p>-</p>
+                    <p><span><?php echo $info['numero'] ?></span>,</p>
+                    <p>-</p>
+                    <p><span><?php echo $info['municipio'] ?></span></p>
+                    <p>-</p>
+                    <p><span><?php echo $info['cidade'] ?></span></p>
+                    <p>-</p>
+                    <p><span><?php echo $info['estado'] ?></span></p>
+                    <p>-</p>
+                    <p><span><?php echo $info['cep'] ?></span></p>
+                </div>
+                <hr>
+                <div class="divInfo">
+                    <div class="dadosInfo">
+                        <p>CNPJ : <span><?php echo $info['CNPJ'] ?></span></span></p>
+                        <p>IE : <span><?php echo $info['IE'] ?></span></span></p>
+                        <p>IM : <span><?php echo $info['IM'] ?></span></span></p>
+                    </div>
+                    <div class="dataInfo">
+                        <p><span id="DataPrint">27/08/22</span> <span id="HoraPrint">22:46</span></p>
+                    </div>
+                </div>
+                <div class="consumidorInf">
+                    <p>Consumidor Nº: <span><?php echo $consumidor ?></span></p>
+                    <p>CPF / CNPJ : <span id="CpfAlterar">000.000.000-00</span></p>
+                </div>
+                <hr>
+            </div>
+            <h1>Cupom Fiscal</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Cod</th>
+                        <th class="desc">Desc</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody id="tBodyPrint">
+                    <?php foreach ($itens as $key => $item) { ?>
+                        <tr>
+                            <td><?php echo $item['cdb'] ?></td>
+                            <td class="key"><?php echo $key + 1 ?></td>
+                            <td><?php echo $item['quantidade'] ?> Uni - <?php echo $item['descricao'] ?></td>
+                            <td>R$<?php echo number_format(($item['valVendItem'] *  $item['quantidade']), 2, ',', '.') ?></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+            <hr>
+            <div class="pagamentoInfo">
+                <p>Dinheiro - R$<span id="PagoPrint"> 00,00</span></p>
+                <p>Troco - R$<span id="TrocoPrint"> 00,00</span></p>
+                <p>Metodo de Pagamento : <span id="metodoPagamento"></span></p>
+                <p id="TotalValuePrint">Total R$ <span id="ValorTotalPrint"><?php echo number_format($totalCompra, 2, ',', '.') ?></span></p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- METODOS DE PAGAMENTO -->
+    <div class="boxModal">
+        <div class="MetodoDePagamento">
+            <select id="selectMDP" onchange="MetodoDePagamento(this)">
+                <option value="">Metodo de Pagamento</option>
+                <option value="01">01 - Dinheiro</option>
+                <option value="02">02 - Cartão</option>
+                <option value="03">03 - Pix</option>
+            </select>
+        </div>
+
+        <!-- PIX -->
+        <div class="Pix fieldDisable">
+            <p>Chaves Pix </p>
+            <div class="fieldLine">
+                <p>555.555.555-55</p>
+                <p>-</p>
+                <p>pix@pix.pix</p>
+                <p>-</p>
+                <p>(81) 99999-9999</p>
+            </div>
+
+        </div>
+
+        <!-- DINHEIRO -->
+
+        <div class="fieldLine fieldLineDinheiro fieldDisable">
+            <p><label for="">Valor Pago : </label> <input type="number" id="ValorPagoPrint" onchange="calcularTroco(this)"></p>
+            <p><strong>Troco : R$ <span id="TrocoPrintValue"></span></strong></p>
+        </div>
+
+        <!-- Cartão -->
+        <div class=" fieldLineDinheiroCartao fieldDisable">
+            <p>Valor Da Compra: R$<span>18,75</span></p>
+            <p>Juros: <span>2% (R$ 3,75)</span></p>
+            <p>Valor Da Total: R$<span>22,50</span></p>
+        </div>
+        <div class="FimDaCompra fieldDisable">
+            <p><strong><label for="">CPF do Cliente : </label> <input type="number" id="CPFPrint" onchange="atualizarCPF()"></strong></p>
+
+        </div>
+        <div class="cartaoFi">
+            <p class="cartaoValorFinal">
+
+            </p>
+        </div>
+        <div class="btn">
+            <button onclick="FinalizarVendasPrint()">Finalizar Compra</button>
+            <button onclick="mudarModal()">Cancelar</button>
+        </div>
+    </div>
+</div>
