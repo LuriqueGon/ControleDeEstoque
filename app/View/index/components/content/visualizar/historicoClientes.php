@@ -1,7 +1,7 @@
 <?php
 
 use MF\Model\Container;
-$cpf = '71079969403';
+$cpf = '12345678910';
 
 if(!isset($_GET['cpf'])){?>
     <script>alert("Por não informar o cpf, o padrão do sistema foi adotado como : <?php echo $cpf ?> \n\n Para ter acesso ao historico pelo cpf, vá até a sessão Clientes-Todos Cliente, e clique em visualizar Historico!!! \n\n Cado contrario informe pelo URL do sistema, adicionando \n\t\t '| &cpf=12345678910 |' \n Após o fim da url!! \n \n OBS: SEM ESPAÇO NA URL")</script>

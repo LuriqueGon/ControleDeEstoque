@@ -12,9 +12,6 @@ $totalLucro = 0;
     <h1>Itens Detalhados</h1>
     <hr style="border: 2px solid black;">
 </section>
-<div class="box-footer clearfix no-border">
-    <a href="/?content=visualizar/itens" type="button" class="btn btn-success pull-right" style="font-size: 1.2rem; margin-left: 2rem;"><i class="fa-regular fa-hand-point-left"></i> Voltar Itens</a>
-</div>
 <div class="mainContainer">
     <div class="row">
         <div class="box box-primary m-auto">
@@ -110,7 +107,10 @@ $totalLucro = 0;
 
 <?php
 if (isset($_GET['action'])) {
-    if ($_GET['action'] == 1) {
+    if($_GET['action'] == 0){
+        $this->view->type = 'danger';
+        $this->view->msg = 'Não pode adicionar dois itens com o mesmo Cód Barras';
+    }else if ($_GET['action'] == 1) {
         $this->view->type = 'success';
         $this->view->msg = 'Item adicionado ao Estoque com sucesso';
     }

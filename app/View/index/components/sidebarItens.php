@@ -36,7 +36,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/?content=visualizar/itensDetails" class="nav-link">
+                            <a href="/?content=visualizar/itens" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Itens</p>
                             </a>

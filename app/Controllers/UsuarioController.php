@@ -9,12 +9,20 @@
         public function register(){
             
             $arquivo = $_FILES['perfil'];
-            var_dump($arquivo);
 
-            $arquivoExplode = explode('.',$arquivo['name']);
-            if($arquivoExplode[sizeof($arquivoExplode)-1] == 'jpg' || $arquivoExplode[sizeof($arquivoExplode)-1] == 'png'){
-                mkdir(__DIR__.'../../../public/dist/img/'.$_POST['usuario'], 0777, true);
-                move_uploaded_file($arquivo['tmp_name'], "dist/img/".$_POST['usuario']."/".$arquivo['name']);
+            if(!empty($arquivo['tmp_name']) && isset($_FILES['perfil'])){
+                $arquivo['type'] = explode('/',$arquivo['type'])[1];
+                var_dump($arquivo);
+                if(in_array($arquivo['type'], ["jpeg","jpg","JPEG","JPG"])){
+                    echo 1;
+                    $imageFile = imagecreatefromjpeg($arquivo['tmp_name']);
+                }else{
+                    $imageFile = imagecreatefrompng($arquivo['tmp_name']);
+                }
+
+                $imageName = bin2hex(random_bytes(20)). 'jpg';
+                @mkdir(__DIR__.'../../../public/dist/img/'.$_POST['usuario'], 0777, true);
+                imagejpeg($imageFile, "dist/img/".$_POST['usuario']."/".$imageName,100);
 
                 $usuario = Container::getModel('usuario');
             
@@ -22,7 +30,7 @@
                 $usuario->__set('email', $_POST['email']);
                 $usuario->__set('password', md5($_POST['senha']));
                 $usuario->__set('permissao', $_POST['permissao']);
-                $usuario->__set('perfil', $_POST['usuario']."/".$arquivo['name']);
+                $usuario->__set('perfil', $_POST['usuario']."/".$imageName);
 
                 if($usuario->cadastrar()){
                     header('location: /?content=visualizar/usuarios&action=1');
@@ -30,11 +38,9 @@
                     header('location: /?content=visualizar/usuarios&action=2');
                 }
 
-            }else{
-                header('location: /?content=visualizar/usuarios&action=4');
-            }
-
-
+                }else{
+                    header('location: /?content=visualizar/usuarios&action=4');
+                }
 
             
         }

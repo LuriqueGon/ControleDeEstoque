@@ -8,7 +8,7 @@
 ?>
 
 <section class="content-header text-center">
-    <h1>Todos os Clientes</h1>
+    <h1>Todos as Configs</h1>
     <hr style="border: 2px solid blue;">
 </section>
 <div class="mainContainer">

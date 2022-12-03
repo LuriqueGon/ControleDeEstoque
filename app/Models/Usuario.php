@@ -70,13 +70,13 @@
 
                 if($this->getEmail()){
 
-                    $query  = "INSERT INTO usuarios VALUES (NULL,?,?,?,?,DEFAULT,?,DEFAULT)";
+                    $query  = "INSERT INTO usuarios VALUES (NULL,?,?,?,DEFAULT,?,DEFAULT,?,DEFAULT)";
                     $stmt = $this->db->prepare($query);
                     $stmt->bindValue(1, $this->__get('username'));
                     $stmt->bindValue(2, $this->__get('email'));
                     $stmt->bindValue(3, $this->__get('password'));
-                    $stmt->bindValue(4, $this->__get('perfil'));
-                    $stmt->bindValue(5, $this->__get('permissao'));
+                    $stmt->bindValue(4, $this->__get('permissao'));
+                    $stmt->bindValue(5, $this->__get('perfil'));
                     $stmt->execute();
 
                     return true;

@@ -117,10 +117,7 @@
     
     $infoModel = Container::getModel('loja');
     $info = $infoModel->getInfo();
-    $info['CNPJ'] = $infoModel->formataCJNP($info['CNPJ']);
-
-
-    
+    @$info['CNPJ'] = $infoModel->formataCJNP($info['CNPJ']);
 
 ?>
 <div class="modal">
@@ -130,24 +127,24 @@
                 <h1>|NOME DA FARMACIA|</h1>
 
                 <div class="enderecoInfo">
-                    <p><span><?php echo $info['endereco'] ?></p>
+                    <p><span><?php echo isset($info['endereco']) ? $info['endereco'] : "" ?></span></p>
                     <p>-</p>
-                    <p><span><?php echo $info['numero'] ?></span>,</p>
+                    <p><span><?php echo isset($info['numero']) ? $info['numero'] : "" ?></span>,</p>
                     <p>-</p>
-                    <p><span><?php echo $info['municipio'] ?></span></p>
+                    <p><span><?php echo isset($info['municipio']) ? $info['municipio'] : "" ?></span></p>
                     <p>-</p>
-                    <p><span><?php echo $info['cidade'] ?></span></p>
+                    <p><span><?php echo isset($info['cidade']) ? $info['cidade'] : "" ?></span></p>
                     <p>-</p>
-                    <p><span><?php echo $info['estado'] ?></span></p>
+                    <p><span><?php echo isset($info['estado']) ? $info['estado'] : "" ?></span></p>
                     <p>-</p>
-                    <p><span><?php echo $info['cep'] ?></span></p>
+                    <p><span><?php echo isset($info['cep']) ? $info['cep'] : "" ?></span></p>
                 </div>
                 <hr>
                 <div class="divInfo">
                     <div class="dadosInfo">
-                        <p>CNPJ : <span><?php echo $info['CNPJ'] ?></span></span></p>
-                        <p>IE : <span><?php echo $info['IE'] ?></span></span></p>
-                        <p>IM : <span><?php echo $info['IM'] ?></span></span></p>
+                        <p>CNPJ : <span><?php echo isset($info['CNPJ'])? $info['CNPJ']: "" ?></span></span></p>
+                        <p>IE : <span><?php echo isset($info['IE'])? $info['IE']: "" ?></span></span></p>
+                        <p>IM : <span><?php echo isset($info['IM'])? $info['IM']: "" ?></span></span></p>
                     </div>
                     <div class="dataInfo">
                         <p><span id="DataPrint">27/08/22</span> <span id="HoraPrint">22:46</span></p>

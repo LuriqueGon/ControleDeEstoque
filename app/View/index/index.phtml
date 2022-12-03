@@ -6,6 +6,11 @@
         <?php 
             $content = isset($_GET['content']) ? "content/".$_GET['content'] : "default";
             $this->loadComponent($content);
+            
+            if(empty($_SESSION['perfil'])){
+                var_dump($_SESSION);
+                $_SESSION['perfil'] = "avatar.png";
+            }
         ?>
     </div>
 

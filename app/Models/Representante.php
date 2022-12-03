@@ -13,7 +13,7 @@
 
         
         public function adicionarRepresentantes(){
-            $query  = "INSERT INTO representantes VALUES (NULL,?,?,?, DEFAULT,?,?)";
+            $query  = "INSERT INTO representantes VALUES (NULL,?,?,?,?, DEFAULT,?)";
             $stmt = $this->db->prepare($query);
 
             $stmt->bindValue(1, $this->__get('nome'));

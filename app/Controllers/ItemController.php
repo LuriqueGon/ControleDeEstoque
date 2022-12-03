@@ -77,7 +77,7 @@
             $item->__set('DataCompraItens', str_replace('/','-',date('Y/m/d')));
             $item->adicionarEstoque();
 
-            header('location: /?content=visualizar/itensDetails&action=1');
+            header('location: /?content=visualizar/itens&action=1');
         }
         
     }

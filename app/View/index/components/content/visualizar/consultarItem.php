@@ -45,20 +45,8 @@
     </div>
 </div>
 <script>
-    $(function() {
-        $("#example1").DataTable({
-            "responsive": false,
-            "lengthChange": false,
-            "searching": false,
-            "autoWidth": false,
-            "ordering": false,
-            "paging": false,
-            "info": false,
-            "buttons": []
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    });
-
     const consultarItem = () =>{
+        console.log(1)
         const item = document.querySelector('#cdb').value
         if(item == ""){
             alert('Campo vazio')
@@ -76,6 +64,8 @@
                     }
                 }
             });
+        }else{
+            alert('O cód precisa ter 13 digitos')
         }
     }
 
@@ -116,6 +106,21 @@
             consultarItem()
         }
     })
+
+    $(function() {
+        $("#example1").DataTable({
+            "responsive": false,
+            "lengthChange": false,
+            "searching": false,
+            "autoWidth": false,
+            "ordering": false,
+            "paging": false,
+            "info": false,
+            "buttons": []
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    });
+
+    
 </script>
 
 

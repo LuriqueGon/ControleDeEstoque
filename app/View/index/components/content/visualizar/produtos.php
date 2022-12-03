@@ -129,7 +129,10 @@ $produtosAtivos = $produto->getAll(1);
 
 <?php
 if (isset($_GET['action'])) {
-    if ($_GET['action'] == 1) {
+    if($_GET['action'] == 0){
+        $this->view->type = 'danger';
+        $this->view->msg = 'O nome do produto não pode se repetir';
+    }else if ($_GET['action'] == 1) {
         $this->view->type = 'success';
         $this->view->msg = 'Produto adicionado com sucesso';
     } else if ($_GET['action'] == 2) {

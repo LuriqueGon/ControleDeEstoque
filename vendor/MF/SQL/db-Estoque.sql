@@ -145,7 +145,8 @@ CREATE TABLE historico (
     valorPago FLOAT(8,2) NOT NULL,
     MDP VARCHAR(50) NOT NULL,
     primeira_compra TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    ultima_compra TIMESTAMP NOT NULL
+    ultima_compra TIMESTAMP NOT NULL,
+    idUser INT NOT NULL
 );
 
 CREATE TABLE clientes (

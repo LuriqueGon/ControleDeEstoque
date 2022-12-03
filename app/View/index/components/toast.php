@@ -7,7 +7,6 @@
 
     function apagarToast() {
         $('#toast').remove()
-        location.href = "/?content=<?php echo empty($this->view->typePage) ? "visualizar" : $this->view->typePage?>/<?php echo $this->view->page?>"
     }
 </script>
 
