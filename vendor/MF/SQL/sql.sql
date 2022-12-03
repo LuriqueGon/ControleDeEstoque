@@ -45,3 +45,5 @@ CREATE TABLE configs(
 	meta INT NOT NULL,
     base INT NOT NULL
 );
+
+INSERT INTO `configs` (`meta`, `base`) VALUES ('1', '1');

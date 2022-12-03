@@ -1,3 +1,4 @@
+<?php empty($_SESSION['perfil']) ? 'avatar.png' : $_SESSION['perfil']?>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="/" class="brand-link">
         <img src="dist/img/marketplace.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">

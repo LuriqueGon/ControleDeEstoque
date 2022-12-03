@@ -14,7 +14,8 @@ CREATE TABLE IF NOT EXISTS `estoque`.`usuarios` (
   `DataRegistro` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Permissao` INT NOT NULL DEFAULT 1,
   `quantVendas` INT NOT NULL DEFAULT 0,
-  `perfil` VARCHAR(200),
+  `perfil` VARCHAR(200) DEFAULT "avatar.png",
+  `ativo` BOOLEAN DEFAULT 1,
   PRIMARY KEY (`idUser`))
 ENGINE = InnoDB;
 
@@ -112,3 +113,5 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+INSERT INTO `usuarios` (`idUser`, `Username`, `Email`, `Senha`, `DataRegistro`, `Permissao`, `quantVendas`, `perfil`) VALUES (NULL, 'default', 'default@default.com', '21232f297a57a5a743894a0e4a801fc3', CURRENT_TIMESTAMP, '3', '0', NULL);
