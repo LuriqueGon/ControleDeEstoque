@@ -115,3 +115,53 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 INSERT INTO `usuarios` (`idUser`, `Username`, `Email`, `Senha`, `DataRegistro`, `Permissao`, `quantVendas`, `perfil`) VALUES (NULL, 'default', 'default@default.com', '21232f297a57a5a743894a0e4a801fc3', CURRENT_TIMESTAMP, '3', '0', NULL);
+
+CREATE TABLE vendas (
+
+    idItemVenda INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    cdb VARCHAR(20) NOT NULL,
+    quantidade INT NOT NULL,
+    idUser INT NOT NULL,
+    FOREIGN KEY (cdb) REFERENCES itens(cdb)
+
+);
+
+CREATE TABLE info_loja (
+	cep INT NOT NULL,
+    estado VARCHAR(2) NOT NULL,
+    cidade VARCHAR(120) NOT NULL,
+    municipio VARCHAR(120) NOT NULL,
+    numero VARCHAR(20) NOT NULL,
+    endereco VARCHAR(120) NOT NULL,
+    CNPJ VARCHAR(14) NOT NULL,
+    IE VARCHAR(9),
+    IM VARCHAR(7)
+);
+
+CREATE TABLE historico (
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    cpf VARCHAR(11) NOT NULL,
+    produtos TEXT NOT NULL,
+    valorPago FLOAT(8,2) NOT NULL,
+    MDP VARCHAR(50) NOT NULL,
+    primeira_compra TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ultima_compra TIMESTAMP NOT NULL
+);
+
+CREATE TABLE clientes (
+
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    cpf VARCHAR(20) NOT NULL UNIQUE,
+    telefone VARCHAR(20) NOT NULL,
+    nome VARCHAR(120),
+    primeira_compra TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    ultima_compra TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    totalCompras INT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE configs(
+	meta INT NOT NULL,
+    base INT NOT NULL
+);
+
+INSERT INTO `configs` (`meta`, `base`) VALUES ('1', '1');

@@ -1,0 +1,1 @@
+start public/iniciarSistema.bat
